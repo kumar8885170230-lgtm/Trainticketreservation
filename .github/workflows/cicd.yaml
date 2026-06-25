@@ -16,7 +16,7 @@ jobs:
           java-version: '17'   # Updated Java version
       
       - name: validate with maven
-        run: mvn validate
+        run: mvn validate 
 
       - name: compile with maven
         run: mvn compile
