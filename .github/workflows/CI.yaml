@@ -1,0 +1,32 @@
+name: CI Pipeline to Build the Code with Maven
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Validate with Maven
+        run: mvn validate
+
+      - name: Compile with Maven
+        run: mvn compile
+
+      - name: Test with Maven
+        run: mvn test
+
+      - name: Package with Maven
+        run: mvn package
